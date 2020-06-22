@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">IoT Home Genie</string>
     <string name="command_hint">Make a wish</string>
+    <string name="record_button_desc">Record button</string>
+    <string name="team_info">FTFL IoT Training Team 3</string>
+    <string name="available_commands">Example commands:\nTurn on LED, Turn off LED\nStart motor, Stop motor</string>
 </resources>

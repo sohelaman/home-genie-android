@@ -30,10 +30,22 @@ public class SpeechHelper {
 
     private Context context;
     private Activity activity;
+    private MqttHelper mqttHelper;
+    private ActionView actionView;
 
     public SpeechHelper(Activity activity, Context context) {
         this.activity = activity;
         this.context = context;
+    }
+
+    public SpeechHelper setMqttHelper(MqttHelper mqttHelper) {
+        this.mqttHelper = mqttHelper;
+        return this;
+    }
+
+    public SpeechHelper setActionView(ActionView actionView) {
+        this.actionView = actionView;
+        return this;
     }
 
     public void checkRecordingPermission() {
@@ -58,7 +70,10 @@ public class SpeechHelper {
             @Override
             public void onResults(Bundle bundle) {
                 ArrayList<String> matches = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-                if (matches != null) commandEditText.setText(matches.get(0));
+                if (matches != null) {
+                    commandEditText.setText(matches.get(0));
+                    parseTextToCommand(matches.get(0));
+                }
             }
 
             @Override
@@ -107,5 +122,31 @@ public class SpeechHelper {
             }
         });
     } // end of setupSpeechRecognition()
+
+    public void parseTextToCommand(String text) {
+        text = text.trim().toLowerCase();
+        String command = null;
+        if (text.equals("turn on switch 1") || text.equals("turn on switch one")) {
+            command = "switch1-on";
+        } else if (text.equals("turn off switch 1") || text.equals("turn off switch one")) {
+            command = "switch1-off";
+        } else if (text.equals("turn on switch 2") || text.equals("turn on switch two")) {
+            command = "switch2-on";
+        } else if (text.equals("turn off switch 2") || text.equals("turn off switch two")) {
+            command = "switch2-off";
+        } else if (text.equals("led on") || text.equals("turn on led") || text.equals("turn led on")) {
+            command = "led-on";
+        } else if (text.equals("led off") || text.equals("turn off led") || text.equals("turn led off")) {
+            command = "led-off";
+        } else if (text.equals("turn on motor") || text.equals("turn motor on") || text.equals("start motor")) {
+            command = "motor-on";
+        } else if (text.equals("turn off motor") || text.equals("turn motor off") || text.equals("stop motor")) {
+            command = "motor-off";
+        }
+
+        if (command != null) {
+            this.mqttHelper.sendMessage(command);
+        }
+    } // end of parseTextToCommand()
 
 }

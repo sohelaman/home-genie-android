@@ -6,12 +6,103 @@
     android:padding="12dp"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/teamInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="6dp"
+        android:paddingBottom="10dp"
+        android:text="@string/team_info"
+        android:textAlignment="center" />
+
     <EditText
         android:id="@+id/commandEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/teamInfo"
+        android:autofillHints=""
         android:hint="@string/command_hint"
+        android:inputType="text"
+        android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/availableCommands"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/commandEditText"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:text="@string/available_commands"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/messageBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/availableCommands"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:text="Message Box" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messageBox"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="ToggleButton" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toggleButton1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:text="Switch 1" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:text="Switch 2" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:text="Switch 3" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:text="Switch 4" />
 
     <ImageButton
         android:id="@+id/recordButton"
@@ -20,6 +111,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/button_background" />
+        android:background="@drawable/button_background"
+        android:contentDescription="@string/record_button_desc" />
 
 </RelativeLayout>
