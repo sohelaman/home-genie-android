@@ -7,14 +7,14 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/commandEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Voice commands"
+        android:hint="@string/command_hint"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <ImageButton
-        android:id="@+id/button"
+        android:id="@+id/recordButton"
         android:layout_width="84dp"
         android:layout_height="84dp"
         android:layout_alignParentBottom="true"
