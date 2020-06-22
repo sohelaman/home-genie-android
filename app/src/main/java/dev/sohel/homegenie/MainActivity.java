@@ -14,10 +14,18 @@ import android.provider.Settings;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -25,6 +33,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private final int PERM_REC_AUDIO = 1;
+    private final String TAG = "HomeGenieMain";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.setupSpeechRec();
+
+        try {
+            MqttClient client = new MqttClient("tcp://mqtt.eclipse.org:1883", "ftflteam3homeauto", new MemoryPersistence());
+            client.setCallback(this.createMqttCallback());
+            client.connect();
+            String topic = "topic/ftflteam3/general";
+            client.subscribe(topic);
+            Toast.makeText(this, "MQTT connected", Toast.LENGTH_LONG).show();
+
+            MqttMessage message = new MqttMessage("init 0".getBytes());
+            message.setQos(2);
+            message.setRetained(false);
+            client.publish(topic, message);
+        } catch (MqttException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "MQTT exception: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private void checkRecordingPermission() {
@@ -63,36 +89,28 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onReadyForSpeech(Bundle bundle) {
-            }
+            public void onReadyForSpeech(Bundle bundle) { }
 
             @Override
-            public void onBeginningOfSpeech() {
-            }
+            public void onBeginningOfSpeech() { }
 
             @Override
-            public void onRmsChanged(float v) {
-            }
+            public void onRmsChanged(float v) { }
 
             @Override
-            public void onBufferReceived(byte[] bytes) {
-            }
+            public void onBufferReceived(byte[] bytes) { }
 
             @Override
-            public void onEndOfSpeech() {
-            }
+            public void onEndOfSpeech() { }
 
             @Override
-            public void onError(int i) {
-            }
+            public void onError(int i) { }
 
             @Override
-            public void onPartialResults(Bundle bundle) {
-            }
+            public void onPartialResults(Bundle bundle) { }
 
             @Override
-            public void onEvent(int i, Bundle bundle) {
-            }
+            public void onEvent(int i, Bundle bundle) { }
         });
 
         findViewById(R.id.button).setOnTouchListener(new View.OnTouchListener() {
@@ -116,5 +134,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     } // end of setupSpeechRec()
+
+    private void setupMqtt() {
+        // TODO
+    }
+
+    private MqttCallback createMqttCallback() {
+        return new MqttCallback() {
+            @Override
+            public void connectionLost(Throwable cause) {
+                Log.d(TAG, "connectionLost");
+            }
+
+            @Override
+            public void messageArrived(String topic, MqttMessage message) throws Exception {
+                String payload = new String(message.getPayload());
+                Log.d(TAG, payload);
+            }
+
+            @Override
+            public void deliveryComplete(IMqttDeliveryToken token) {
+                Log.d(TAG, "deliveryComplete");
+            }
+       };
+    }
 
 }
