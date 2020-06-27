@@ -78,28 +78,36 @@ public class SpeechHelper {
             }
 
             @Override
-            public void onReadyForSpeech(Bundle bundle) { }
+            public void onReadyForSpeech(Bundle bundle) {
+            }
 
             @Override
-            public void onBeginningOfSpeech() { }
+            public void onBeginningOfSpeech() {
+            }
 
             @Override
-            public void onRmsChanged(float v) { }
+            public void onRmsChanged(float v) {
+            }
 
             @Override
-            public void onBufferReceived(byte[] bytes) { }
+            public void onBufferReceived(byte[] bytes) {
+            }
 
             @Override
-            public void onEndOfSpeech() { }
+            public void onEndOfSpeech() {
+            }
 
             @Override
-            public void onError(int i) { }
+            public void onError(int i) {
+            }
 
             @Override
-            public void onPartialResults(Bundle bundle) { }
+            public void onPartialResults(Bundle bundle) {
+            }
 
             @Override
-            public void onEvent(int i, Bundle bundle) { }
+            public void onEvent(int i, Bundle bundle) {
+            }
         });
 
         recordButton.setOnTouchListener(new View.OnTouchListener() {
@@ -125,46 +133,9 @@ public class SpeechHelper {
     } // end of setupSpeechRecognition()
 
     public void parseTextToCommand(String text) {
-        String[] sw1OnLang = new String[]{"turn on switch 1", "turn on switch one", "turn on blue led", "turn on blue light"};
-        String[] sw1OffLang = new String[]{"turn off switch 1", "turn off switch one", "turn off blue led", "turn off blue light"};
-        String[] sw2OnLang = new String[]{"turn on switch 2", "turn on switch two", "turn on green led", "turn on green light"};
-        String[] sw2OffLang = new String[]{"turn off switch 2", "turn off switch two", "turn off green led", "turn off green light"};
-        String[] sw3OnLang = new String[]{"turn on switch 3", "turn on switch three", "turn on red led", "turn on red light"};
-        String[] sw3OffLang = new String[]{"turn off switch 3", "turn off switch three", "turn off red led", "turn off red light"};
-        String[] sw4OnLang = new String[]{"turn on switch 4", "turn on switch four"};
-        String[] sw4OffLang = new String[]{"turn off switch 4", "turn off switch four"};
-        String[] ledOnLang = new String[]{"turn on led", "led on", "light on", "turn on the light"};
-        String[] ledOffLang = new String[]{"turn off led", "led off", "light off", "turn off the light"};
-        String[] motorOnLang = new String[]{"turn on motor", "motor on", "start motor", "start the motor"};
-        String[] motorOffLang = new String[]{"turn off motor", "motor off", "stop motor", "stop the motor"};
-
         text = text.trim().toLowerCase();
-        String command = null;
-        if (Arrays.asList(sw1OnLang).contains(text)) {
-            command = "switch1-on";
-        } else if (Arrays.asList(sw1OffLang).contains(text)) {
-            command = "switch1-off";
-        } else if (Arrays.asList(sw2OnLang).contains(text)) {
-            command = "switch2-on";
-        } else if (Arrays.asList(sw2OffLang).contains(text)) {
-            command = "switch2-off";
-        } else if (Arrays.asList(sw3OnLang).contains(text)) {
-            command = "switch3-on";
-        } else if (Arrays.asList(sw3OffLang).contains(text)) {
-            command = "switch3-off";
-        } else if (Arrays.asList(sw4OnLang).contains(text)) {
-            command = "switch4-on";
-        } else if (Arrays.asList(sw4OffLang).contains(text)) {
-            command = "switch4-off";
-        } else if (Arrays.asList(ledOnLang).contains(text)) {
-            command = "led-on";
-        } else if (Arrays.asList(ledOffLang).contains(text)) {
-            command = "led-off";
-        } else if (Arrays.asList(motorOnLang).contains(text)) {
-            command = "motor-on";
-        } else if (Arrays.asList(motorOffLang).contains(text)) {
-            command = "motor-off";
-        }
+        Sentences sentences = new Sentences();
+        String command = sentences.map.get(text);
 
         if (command != null) {
             this.mqttHelper.sendMessage(command);
