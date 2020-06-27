@@ -66,7 +66,7 @@
         android:layout_marginRight="100dp"
         android:paddingTop="20dp"
         android:paddingBottom="10dp"
-        android:text="Switch 1" />
+        android:text="Blue light" />
 
     <Switch
         android:id="@+id/switch2"
@@ -78,7 +78,7 @@
         android:layout_marginRight="100dp"
         android:paddingTop="20dp"
         android:paddingBottom="10dp"
-        android:text="Switch 2" />
+        android:text="Green light" />
 
     <Switch
         android:id="@+id/switch3"
@@ -90,7 +90,7 @@
         android:layout_marginRight="100dp"
         android:paddingTop="20dp"
         android:paddingBottom="10dp"
-        android:text="Switch 3" />
+        android:text="Red light" />
 
     <Switch
         android:id="@+id/switch4"
@@ -102,7 +102,7 @@
         android:layout_marginRight="100dp"
         android:paddingTop="20dp"
         android:paddingBottom="10dp"
-        android:text="Switch 4" />
+        android:text="Motor" />
 
     <ImageButton
         android:id="@+id/recordButton"

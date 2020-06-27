@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 
 import dev.sohel.homegenie.R;
@@ -124,23 +125,44 @@ public class SpeechHelper {
     } // end of setupSpeechRecognition()
 
     public void parseTextToCommand(String text) {
+        String[] sw1OnLang = new String[]{"turn on switch 1", "turn on switch one", "turn on blue led", "turn on blue light"};
+        String[] sw1OffLang = new String[]{"turn off switch 1", "turn off switch one", "turn off blue led", "turn off blue light"};
+        String[] sw2OnLang = new String[]{"turn on switch 2", "turn on switch two", "turn on green led", "turn on green light"};
+        String[] sw2OffLang = new String[]{"turn off switch 2", "turn off switch two", "turn off green led", "turn off green light"};
+        String[] sw3OnLang = new String[]{"turn on switch 3", "turn on switch three", "turn on red led", "turn on red light"};
+        String[] sw3OffLang = new String[]{"turn off switch 3", "turn off switch three", "turn off red led", "turn off red light"};
+        String[] sw4OnLang = new String[]{"turn on switch 4", "turn on switch four"};
+        String[] sw4OffLang = new String[]{"turn off switch 4", "turn off switch four"};
+        String[] ledOnLang = new String[]{"turn on led", "led on", "light on", "turn on the light"};
+        String[] ledOffLang = new String[]{"turn off led", "led off", "light off", "turn off the light"};
+        String[] motorOnLang = new String[]{"turn on motor", "motor on", "start motor", "start the motor"};
+        String[] motorOffLang = new String[]{"turn off motor", "motor off", "stop motor", "stop the motor"};
+
         text = text.trim().toLowerCase();
         String command = null;
-        if (text.equals("turn on switch 1") || text.equals("turn on switch one")) {
+        if (Arrays.asList(sw1OnLang).contains(text)) {
             command = "switch1-on";
-        } else if (text.equals("turn off switch 1") || text.equals("turn off switch one")) {
+        } else if (Arrays.asList(sw1OffLang).contains(text)) {
             command = "switch1-off";
-        } else if (text.equals("turn on switch 2") || text.equals("turn on switch two")) {
+        } else if (Arrays.asList(sw2OnLang).contains(text)) {
             command = "switch2-on";
-        } else if (text.equals("turn off switch 2") || text.equals("turn off switch two")) {
+        } else if (Arrays.asList(sw2OffLang).contains(text)) {
             command = "switch2-off";
-        } else if (text.equals("led on") || text.equals("turn on led") || text.equals("turn led on")) {
+        } else if (Arrays.asList(sw3OnLang).contains(text)) {
+            command = "switch3-on";
+        } else if (Arrays.asList(sw3OffLang).contains(text)) {
+            command = "switch3-off";
+        } else if (Arrays.asList(sw4OnLang).contains(text)) {
+            command = "switch4-on";
+        } else if (Arrays.asList(sw4OffLang).contains(text)) {
+            command = "switch4-off";
+        } else if (Arrays.asList(ledOnLang).contains(text)) {
             command = "led-on";
-        } else if (text.equals("led off") || text.equals("turn off led") || text.equals("turn led off")) {
+        } else if (Arrays.asList(ledOffLang).contains(text)) {
             command = "led-off";
-        } else if (text.equals("turn on motor") || text.equals("turn motor on") || text.equals("start motor")) {
+        } else if (Arrays.asList(motorOnLang).contains(text)) {
             command = "motor-on";
-        } else if (text.equals("turn off motor") || text.equals("turn motor off") || text.equals("stop motor")) {
+        } else if (Arrays.asList(motorOffLang).contains(text)) {
             command = "motor-off";
         }
 

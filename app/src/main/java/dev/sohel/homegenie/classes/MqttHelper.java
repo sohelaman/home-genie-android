@@ -14,7 +14,8 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class MqttHelper {
 
-    final String mqttServerUri = "tcp://mqtt.eclipse.org:1883";
+    final String mqttServerUri = "tcp://157.230.30.178:1883";
+    // final String mqttServerUri = "tcp://mqtt.eclipse.org:1883";
     final String clientId = "ftflteam3homeauto";
     final String topic = "topic/ftflteam3/general";
 
