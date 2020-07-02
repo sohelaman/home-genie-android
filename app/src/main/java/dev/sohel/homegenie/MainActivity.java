@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
         MqttHelper mqttHelper = new MqttHelper(MainActivity.this, context);
         ActionView actionView = new ActionView(MainActivity.this, context);
 
-        actionView.registerListeners();
-
         mqttHelper.setActionView(actionView);
         actionView.setMqttHelper(mqttHelper);
         speechHelper.setMqttHelper(mqttHelper);
         speechHelper.setActionView(actionView);
 
         mqttHelper.setupMqtt();
+
+        actionView.registerListeners();
 
     } // onCreate()
 

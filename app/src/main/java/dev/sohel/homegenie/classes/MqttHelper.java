@@ -12,12 +12,14 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+import java.util.Arrays;
+
 public class MqttHelper {
 
     final String mqttServerUri = "tcp://157.230.30.178:1883";
     // final String mqttServerUri = "tcp://mqtt.eclipse.org:1883";
-    final String clientId = "ftflteam3homeauto";
     final String topic = "topic/ftflteam3/general";
+    String clientId;
 
     private Context context;
     private Activity activity;
@@ -29,6 +31,9 @@ public class MqttHelper {
     public MqttHelper(Activity activity, Context context) {
         this.activity = activity;
         this.context = context;
+        this.clientId = "android-ftflteam3-" + Math.random() * (999999 - 100000 + 1) + 100000;
+        Log.d(TAG, "clientId: " + this.clientId);
+
     }
 
     public MqttHelper setActionView(ActionView actionView) {
@@ -96,6 +101,7 @@ public class MqttHelper {
             public void messageArrived(String topic, MqttMessage message) {
                 String payload = new String(message.getPayload());
                 Log.d(TAG, "messageArrived:" + payload);
+                processIncomingMessage(payload);
             }
 
             @Override
@@ -122,6 +128,28 @@ public class MqttHelper {
             this.actionView.toggleButton.setChecked(false);
             Toast.makeText(this.context, "MQTT exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void processIncomingMessage(String str) {
+        if (this.client == null) {
+            return;
+        }
+
+        this.actionView.messageBox.setText(str);
+
+        try {
+            String[] commandParts = str.split("-");
+            if (Arrays.asList(this.actionView.switches).contains(commandParts[0])) {
+                this.actionView.updateButtonState(commandParts[0], commandParts[1].equals("on"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isMyOwnMessage(String str) {
+        // TODO
+        return false;
     }
 
 }
