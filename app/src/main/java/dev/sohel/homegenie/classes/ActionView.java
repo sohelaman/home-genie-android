@@ -34,6 +34,9 @@ public class ActionView {
     final Switch switch6;
     final Switch switch7;
 
+    final TextView textViewCelsius;
+    final TextView textViewHeartbeat;
+
     public ActionView(Activity activity, Context context) {
         this.activity = activity;
         this.context = context;
@@ -47,6 +50,9 @@ public class ActionView {
         this.switch5 = this.activity.findViewById(R.id.switch5);
         this.switch6 = this.activity.findViewById(R.id.switch6);
         this.switch7 = this.activity.findViewById(R.id.switch7);
+
+        this.textViewCelsius = this.activity.findViewById(R.id.textViewCelsius);
+        this.textViewHeartbeat = this.activity.findViewById(R.id.textViewHeartbeat);
 
         this.switches = new String[]{"switch1", "switch2", "switch3", "switch4", "switch5", "switch6", "switch7"};
     } // constructor

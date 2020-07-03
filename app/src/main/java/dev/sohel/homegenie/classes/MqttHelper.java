@@ -18,8 +18,10 @@ public class MqttHelper {
 
     final String mqttServerUri = "tcp://157.230.30.178:1883";
     // final String mqttServerUri = "tcp://mqtt.eclipse.org:1883";
-    final String topic = "topic/ftflteam3/general";
+    final String topic1 = "topic/ftflteam3/commands";
     final String topic2 = "topic/ftflteam3/activities";
+    final String topic3 = "topic/ftflteam3/heartbeats";
+    final String topic4 = "topic/ftflteam3/temperature";
     String clientId;
 
     private Context context;
@@ -58,6 +60,8 @@ public class MqttHelper {
             client.connect();
             this.client = client;
             client.subscribe(this.topic2);
+            client.subscribe(this.topic3);
+            client.subscribe(this.topic4);
             Toast.makeText(this.context, "MQTT connected", Toast.LENGTH_SHORT).show();
 
             this.actionView.toggleButton.setChecked(true);
@@ -102,7 +106,7 @@ public class MqttHelper {
             public void messageArrived(String topic, MqttMessage message) {
                 String payload = new String(message.getPayload());
                 Log.d(TAG, "messageArrived at topic " + topic + " -- " + payload);
-                processIncomingMessage(payload);
+                processIncomingMessage(topic, payload);
             }
 
             @Override
@@ -117,11 +121,17 @@ public class MqttHelper {
             return;
         }
 
+        if ((this.actionView.switch6.isChecked() && str.startsWith("switch4-"))
+                || (this.actionView.switch7.isChecked() && str.startsWith("switch5-"))) {
+            Toast.makeText(this.context, "Command will not work on auto mode!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         MqttMessage message = new MqttMessage(str.getBytes());
         message.setQos(2);
         message.setRetained(false);
         try {
-            this.client.publish(this.topic, message);
+            this.client.publish(this.topic1, message);
             this.actionView.messageBox.setText(str);
         } catch (MqttException e) {
             e.printStackTrace();
@@ -131,26 +141,38 @@ public class MqttHelper {
         }
     }
 
-    public void processIncomingMessage(String str) {
+    public void processIncomingMessage(final String topic, final String str) {
         if (this.client == null) {
             return;
         }
 
-        this.actionView.messageBox.setText(str);
-
-        try {
-            String[] commandParts = str.split("-");
-            if (Arrays.asList(this.actionView.switches).contains(commandParts[0])) {
-                this.actionView.updateButtonState(commandParts[0], commandParts[1].equals("on"));
+        if (topic.equals(topic1)) {
+            this.actionView.messageBox.setText(str);
+        } else if (topic.equals(topic2)) {
+            try {
+                String[] commandParts = str.split("-");
+                if (Arrays.asList(this.actionView.switches).contains(commandParts[0])) {
+                    this.actionView.updateButtonState(commandParts[0], commandParts[1].equals("on"));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else if (topic.equals(topic3)) {
+            this.activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    actionView.textViewHeartbeat.setText(str);
+                }
+            });
+        } else if (topic.equals(topic4)) {
+            this.activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // String t = str.split(".")[0] + " C";
+                    actionView.textViewCelsius.setText("T: " + str + " ℃"); // ℃
+                }
+            });
         }
-    }
-
-    public boolean isMyOwnMessage(String str) {
-        // TODO
-        return false;
     }
 
 }

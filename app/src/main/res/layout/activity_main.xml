@@ -2,155 +2,222 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="12dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/teamInfo"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="6dp"
-        android:paddingBottom="10dp"
-        android:text="@string/team_info"
-        android:textAlignment="center" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/commandEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/teamInfo"
-        android:autofillHints=""
-        android:hint="@string/command_hint"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/availableCommands"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/commandEditText"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/available_commands"
-        android:textAlignment="center" />
+            <TextView
+                android:id="@+id/teamInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="6dp"
+                android:paddingBottom="10dp"
+                android:text="@string/team_info"
+                android:textAlignment="center" />
 
-    <TextView
-        android:id="@+id/messageBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/availableCommands"
-        android:paddingTop="10dp"
-        android:paddingBottom="20dp"
-        android:textAlignment="center"
-        android:text="Message Box" />
+            <EditText
+                android:id="@+id/commandEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/teamInfo"
+                android:autofillHints=""
+                android:hint="@string/command_hint"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-    <ToggleButton
-        android:id="@+id/toggleButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/messageBox"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="ToggleButton"
-        android:textOff="MQTT Disconnected"
-        android:textOn="MQTT Connected" />
+            <TextView
+                android:id="@+id/availableCommands"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/commandEditText"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:text="@string/available_commands"
+                android:textAlignment="center" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toggleButton1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Blue light" />
+            <TextView
+                android:id="@+id/messageBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/availableCommands"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Command Box"
+                android:textAlignment="center" />
 
-    <Switch
-        android:id="@+id/switch2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/switch1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Green light" />
+            <ToggleButton
+                android:id="@+id/toggleButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/messageBox"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="ToggleButton"
+                android:textOff="MQTT"
+                android:textOn="MQTT" />
 
-    <Switch
-        android:id="@+id/switch3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/switch2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Red light" />
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toggleButton1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:weightSum="2.0">
 
-    <Switch
-        android:id="@+id/switch4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/switch3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Motor" />
+                <TextView
+                    android:id="@+id/textViewCelsius"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="right"
+                    android:paddingTop="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Temperature"
+                    android:textColor="#5499C7"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-    <Switch
-        android:id="@+id/switch5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/switch4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Switch 5" />
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="#d3d3d3" />
 
-    <TextView
-        android:id="@+id/textViewAuto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/switch5"
-        android:paddingTop="20dp"
-        android:paddingBottom="10dp"
-        android:textAlignment="center"
-        android:text="Auto Mode" />
+                <TextView
+                    android:id="@+id/textViewHeartbeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Heartbeat"
+                    android:textSize="16sp"
+                    android:textColor="#EC7063"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-    <Switch
-        android:id="@+id/switch6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewAuto"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Auto Light" />
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linearLayout1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Blue light" />
 
-    <Switch
-        android:id="@+id/switch7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/switch6"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Auto Fan" />
+            <Switch
+                android:id="@+id/switch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/switch1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Green light" />
+
+            <Switch
+                android:id="@+id/switch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/switch2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Red light" />
+
+            <Switch
+                android:id="@+id/switch4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/switch3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Light" />
+
+            <Switch
+                android:id="@+id/switch5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/switch4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Fan" />
+
+            <TextView
+                android:id="@+id/textViewAuto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/switch5"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Auto Mode"
+                android:textAlignment="center" />
+
+            <Switch
+                android:id="@+id/switch6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewAuto"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Auto Light" />
+
+            <Switch
+                android:id="@+id/switch7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/switch6"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Auto Fan" />
+
+            <TextView
+                android:id="@+id/textViewDummy"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/switch6"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text=""
+                android:textAlignment="center" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
     <ImageButton
         android:id="@+id/recordButton"
