@@ -8,8 +8,8 @@ android {
         applicationId "dev.sohel.homegenie"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 102
-        versionName "1.02"
+        versionCode 104
+        versionName "1.04"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/commandEditText"
         android:paddingTop="10dp"
-        android:paddingBottom="20dp"
+        android:paddingBottom="10dp"
         android:text="@string/available_commands"
         android:textAlignment="center" />
 
@@ -54,7 +54,9 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="ToggleButton" />
+        android:text="ToggleButton"
+        android:textOff="MQTT Disconnected"
+        android:textOn="MQTT Connected" />
 
     <Switch
         android:id="@+id/switch1"
@@ -64,7 +66,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="Blue light" />
 
@@ -76,7 +78,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="Green light" />
 
@@ -88,7 +90,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="Red light" />
 
@@ -100,9 +102,55 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="Motor" />
+
+    <Switch
+        android:id="@+id/switch5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Switch 5" />
+
+    <TextView
+        android:id="@+id/textViewAuto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch5"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="center"
+        android:text="Auto Mode" />
+
+    <Switch
+        android:id="@+id/switch6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewAuto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Auto Light" />
+
+    <Switch
+        android:id="@+id/switch7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Auto Fan" />
 
     <ImageButton
         android:id="@+id/recordButton"

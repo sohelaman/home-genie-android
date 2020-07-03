@@ -30,6 +30,9 @@ public class ActionView {
     final Switch switch2;
     final Switch switch3;
     final Switch switch4;
+    final Switch switch5;
+    final Switch switch6;
+    final Switch switch7;
 
     public ActionView(Activity activity, Context context) {
         this.activity = activity;
@@ -41,8 +44,11 @@ public class ActionView {
         this.switch2 = this.activity.findViewById(R.id.switch2);
         this.switch3 = this.activity.findViewById(R.id.switch3);
         this.switch4 = this.activity.findViewById(R.id.switch4);
+        this.switch5 = this.activity.findViewById(R.id.switch5);
+        this.switch6 = this.activity.findViewById(R.id.switch6);
+        this.switch7 = this.activity.findViewById(R.id.switch7);
 
-        this.switches = new String[]{"switch1", "switch2", "switch3", "switch4"};
+        this.switches = new String[]{"switch1", "switch2", "switch3", "switch4", "switch5", "switch6", "switch7"};
     } // constructor
 
     public ActionView setMqttHelper(MqttHelper mqttHelper) {
@@ -56,6 +62,9 @@ public class ActionView {
         this.switch2.setOnCheckedChangeListener(this.getButtonStateChangeListener("switch2"));
         this.switch3.setOnCheckedChangeListener(this.getButtonStateChangeListener("switch3"));
         this.switch4.setOnCheckedChangeListener(this.getButtonStateChangeListener("switch4"));
+        this.switch5.setOnCheckedChangeListener(this.getButtonStateChangeListener("switch5"));
+        this.switch6.setOnCheckedChangeListener(this.getButtonStateChangeListener("switch6"));
+        this.switch7.setOnCheckedChangeListener(this.getButtonStateChangeListener("switch7"));
     } // end of registerListeners()
 
 
@@ -99,6 +108,15 @@ public class ActionView {
                 break;
             case "switch4":
                 targetSwitch = this.switch4;
+                break;
+            case "switch5":
+                targetSwitch = this.switch5;
+                break;
+            case "switch6":
+                targetSwitch = this.switch6;
+                break;
+            case "switch7":
+                targetSwitch = this.switch7;
                 break;
             default:
                 targetSwitch = null;

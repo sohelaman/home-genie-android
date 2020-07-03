@@ -56,29 +56,73 @@ public class Sentences {
         map.put("turn off switch 4", sw4Off);
         map.put("turn off switch four", sw4Off);
 
-        String ledOn = "led-on";
-        map.put("turn on led", ledOn);
-        map.put("led on", ledOn);
-        map.put("light on", ledOn);
-        map.put("turn on the light", ledOn);
+        String sw5On = "switch5-on";
+        map.put("turn on switch 5", sw5On);
+        map.put("turn on switch five", sw5On);
+        map.put("turn on led", sw5On);
+        map.put("led on", sw5On);
+        map.put("light on", sw5On);
+        map.put("turn on the light", sw5On);
 
-        String ledOff = "led-off";
-        map.put("turn off led", ledOff);
-        map.put("led off", ledOff);
-        map.put("light off", ledOff);
-        map.put("turn off the light", ledOff);
+        String sw5Off = "switch5-off";
+        map.put("turn off switch 5", sw5Off);
+        map.put("turn off switch five", sw5Off);
+        map.put("turn off led", sw5Off);
+        map.put("led off", sw5Off);
+        map.put("light off", sw5Off);
+        map.put("turn off the light", sw5Off);
 
-        String motorOn = "motor-on";
-        map.put("turn on motor", motorOn);
-        map.put("motor on", motorOn);
-        map.put("start motor", motorOn);
-        map.put("start the motor", motorOn);
+        String sw6On = "switch6-on";
+        map.put("turn on switch 6", sw6On);
+        map.put("turn on switch six", sw6On);
+        map.put("turn on motor", sw6On);
+        map.put("motor on", sw6On);
+        map.put("start motor", sw6On);
+        map.put("start the motor", sw6On);
 
-        String motorOff = "motor-off";
-        map.put("turn off motor", motorOff);
-        map.put("motor off", motorOff);
-        map.put("stop motor", motorOff);
-        map.put("stop the motor", motorOff);
+        String sw6Off = "switch6-off";
+        map.put("turn off switch 6", sw6Off);
+        map.put("turn off switch six", sw6Off);
+        map.put("turn off motor", sw6Off);
+        map.put("motor off", sw6Off);
+        map.put("stop motor", sw6Off);
+        map.put("stop the motor", sw6Off);
+
+        String sw7On = "switch7-on";
+        map.put("turn on switch 7", sw7On);
+        map.put("turn on switch seven", sw7On);
+        map.put("light auto", sw7On);
+        map.put("auto light", sw7On);
+
+        String sw7Off = "switch7-off";
+        map.put("turn off switch 7", sw7Off);
+        map.put("turn off switch seven", sw7Off);
+        map.put("fan auto", sw7Off);
+        map.put("auto fan", sw7Off);
+
+        // String ledOn = "led-on";
+        // map.put("turn on led", ledOn);
+        // map.put("led on", ledOn);
+        // map.put("light on", ledOn);
+        // map.put("turn on the light", ledOn);
+
+        // String ledOff = "led-off";
+        // map.put("turn off led", ledOff);
+        // map.put("led off", ledOff);
+        // map.put("light off", ledOff);
+        // map.put("turn off the light", ledOff);
+
+        // String motorOn = "motor-on";
+        // map.put("turn on motor", motorOn);
+        // map.put("motor on", motorOn);
+        // map.put("start motor", motorOn);
+        // map.put("start the motor", motorOn);
+
+        // String motorOff = "motor-off";
+        // map.put("turn off motor", motorOff);
+        // map.put("motor off", motorOff);
+        // map.put("stop motor", motorOff);
+        // map.put("stop the motor", motorOff);
 
     } // end of enumerate()
 

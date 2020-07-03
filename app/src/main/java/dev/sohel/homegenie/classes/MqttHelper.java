@@ -19,6 +19,7 @@ public class MqttHelper {
     final String mqttServerUri = "tcp://157.230.30.178:1883";
     // final String mqttServerUri = "tcp://mqtt.eclipse.org:1883";
     final String topic = "topic/ftflteam3/general";
+    final String topic2 = "topic/ftflteam3/activities";
     String clientId;
 
     private Context context;
@@ -56,7 +57,7 @@ public class MqttHelper {
             client.setCallback(this.createMqttCallback());
             client.connect();
             this.client = client;
-            client.subscribe(this.topic);
+            client.subscribe(this.topic2);
             Toast.makeText(this.context, "MQTT connected", Toast.LENGTH_SHORT).show();
 
             this.actionView.toggleButton.setChecked(true);
@@ -100,7 +101,7 @@ public class MqttHelper {
             @Override
             public void messageArrived(String topic, MqttMessage message) {
                 String payload = new String(message.getPayload());
-                Log.d(TAG, "messageArrived:" + payload);
+                Log.d(TAG, "messageArrived at topic " + topic + " -- " + payload);
                 processIncomingMessage(payload);
             }
 
