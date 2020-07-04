@@ -16,8 +16,8 @@ import java.util.Arrays;
 
 public class MqttHelper {
 
-    final String mqttServerUri = "tcp://157.230.30.178:1883";
-    // final String mqttServerUri = "tcp://mqtt.eclipse.org:1883";
+    // final String mqttServerUri = "tcp://157.230.30.178:1883";
+    final String mqttServerUri = "tcp://mqtt.eclipse.org:1883";
     final String topic1 = "topic/ftflteam3/commands";
     final String topic2 = "topic/ftflteam3/activities";
     final String topic3 = "topic/ftflteam3/heartbeats";

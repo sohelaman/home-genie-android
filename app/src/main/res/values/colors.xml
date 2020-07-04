@@ -2,8 +2,10 @@
 <resources>
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#555555</color>
-    <color name="colorAccent">#3498DB</color>
+    <color name="colorAccent">#00A5B8</color>
+    <color name="colorSecondaryAccent">#E74C3C</color>
+    <color name="colorThirdAccent">#0F4672</color>
 
-    <color name="colorButton">#3498DB</color>
+    <color name="colorButton">#00A5B8</color>
     <color name="colorButtonActive">#E74C3C</color>
 </resources>
